@@ -1,0 +1,43 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.poetry]
+authors = []
+description = ""
+name = "python-fastapi-skeleton"
+version = "1.0.0"
+
+[[tool.poetry.source]]
+name = "p44"
+url = "https://project44.jfrog.io/artifactory/api/pypi/p44-pypi/simple/"
+default = true
+
+[tool.poetry.dependencies]
+python = "^3.10"
+p44-fastapi = "^2.0.7"
+
+[tool.poetry.dev-dependencies]
+black = "24.2.0"
+flake8 = "7.0.0"
+isort = "5.13.2"
+pre-commit = "^3.6.2"
+pytest = "^8.0.2"
+pytest-cov = "^4.1.0"
+requests = "^2.31.0"  # requests is needed by fastapi.testclient.TestClient
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 120
+force_single_line = "True"
+known_p44 = "p44"
+known_tests = "tests"
+known_first_party = "python_fastapi_skeleton"
+sections = "FUTURE,STDLIB,THIRDPARTY,P44,FIRSTPARTY,TESTS"
+
+[tool.poetry.scripts]
+start = "python_fastapi_skeleton.run:start"
